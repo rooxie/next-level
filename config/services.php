@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'openmeteo' => [
+        'key' => env('OPENMETEO_KEY'),
+        'url' => env('OPENMETEO_URL', 'https://api.open-meteo.com/v1'),
+        'timeout' => env('OPENMETEO_TIMEOUT', 5),
+    ]
+
 ];
