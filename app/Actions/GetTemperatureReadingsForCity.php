@@ -18,6 +18,7 @@ class GetTemperatureReadingsForCity
     {
         $temperatureReadings = TemperatureReading::query()->where('city_id', $city->id)
             ->whereDate('time', '=', $date)
+            ->orderByDesc('time')
             ->get();
 
         return $temperatureReadings;

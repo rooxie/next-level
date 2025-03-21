@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * @property int $id
  * @property int $city_id
- * @property string $temperature
+ * @property float $temperature
  * @property string $source
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TemperatureReading newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TemperatureReading newQuery()
@@ -45,6 +45,7 @@ class TemperatureReading extends Model
      */
     protected $casts = [
         'time' => 'datetime',
+        'temperature' => 'float',
     ];
 
     /**

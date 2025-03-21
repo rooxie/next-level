@@ -7,10 +7,14 @@
 
         <div class="table-responsive">
             <table class="table table-bordered">
+                <colgroup>
+                    <col class="w-100">
+                    <col class="w-auto">
+                </colgroup>
                 <thead class="table-light">
                 <tr>
                     <th>Name</th>
-                    <th>Actions</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>

@@ -24,7 +24,7 @@ window.Chart.simpleFactory = function(id, temperatureReadings) {
             datasets: [{
                 label: 'Temperature (°C)',
                 data: temperatures,
-                borderColor: 'rgb(75, 192, 192)',
+                borderColor: 'rgb(0,0,0)',
                 borderWidth: 2,
                 fill: false,
             }]

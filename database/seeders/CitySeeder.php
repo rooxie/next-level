@@ -15,13 +15,19 @@ class CitySeeder extends Seeder
         //
         // Germany
         ['name' => 'Berlin', 'country_code' => 'DE', 'latitude' => '52.5200', 'longitude' => '13.4050', 'timezone' => 'Europe/Berlin'],
+        ['name' => 'Munich', 'country_code' => 'DE', 'latitude' => '48.1351', 'longitude' => '11.5820', 'timezone' => 'Europe/Berlin'],
         //
-        // Japan
-        ['name' => 'Tokyo', 'country_code' => 'JP', 'latitude' => '35.6895', 'longitude' => '139.6917', 'timezone' => 'Asia/Tokyo'],
+        // United Kingdom
+        ['name' => 'London', 'country_code' => 'GB', 'latitude' => '51.5074', 'longitude' => '-0.1278', 'timezone' => 'Europe/London'],
+        ['name' => 'Manchester', 'country_code' => 'GB', 'latitude' => '53.4830', 'longitude' => '-2.2000', 'timezone' => 'Europe/London'],
         //
-        // USA
-        ['name' => 'New York', 'country_code' => 'US', 'latitude' => '40.7128', 'longitude' => '-74.0060', 'timezone' => 'America/New_York'],
-        ['name' => 'Los Angeles', 'country_code' => 'US', 'latitude' => '34.0522', 'longitude' => '-118.2437', 'timezone' => 'America/Los_Angeles'],
+        // France
+        ['name' => 'Paris', 'country_code' => 'FR', 'latitude' => '48.8566', 'longitude' => '2.3522', 'timezone' => 'Europe/Paris'],
+        ['name' => 'Marseille', 'country_code' => 'FR', 'latitude' => '43.2965', 'longitude' => '5.3698', 'timezone' => 'Europe/Paris'],
+        //
+        // Finland
+        ['name' => 'Helsinki', 'country_code' => 'FI', 'latitude' => '60.1695', 'longitude' => '24.9354', 'timezone' => 'Europe/Helsinki'],
+        ['name' => 'Tampere', 'country_code' => 'FI', 'latitude' => '61.4978', 'longitude' => '23.7610', 'timezone' => 'Europe/Helsinki'],
     ];
 
     /**
