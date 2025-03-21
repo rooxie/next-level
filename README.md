@@ -1,5 +1,9 @@
 # Next Level Test Project
 
+
+## WARNING
+The project requires PHP 8.4, however I didn't require PHP 8.4 explicitly in `composer.json` because in order to start Laravel Sail (Docker wrapper), you need to install the dependencies first, and I assume that PHP version on your local machine is not `8.4` yet.
+
 ## Installation
 1. Install Composer dependencies.
 ```bash
