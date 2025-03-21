@@ -1,66 +1,58 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Next Level Test Project
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Installation
+1. Install Composer dependencies.
+```bash
+composer update
+```
 
-## About Laravel
+2. Install NPM dependencies and compile assets.
+```bash
+npm install
+npm run build
+```
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+3. Build and run Laravel Sail environment.
+```bash
+./vendor/bin/sail build --no-cache
+./vendor/bin/sail up -d
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+4. Run the migrations with the `--seed` flag to seed the database with city records.
+```bash
+./vendor/bin/sail artisan migrate:fresh --seed
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Usage
+### Web UI
+Open the browser and navigate to the application URL.
 
-## Learning Laravel
+- Here you will see a paginated table with the list of cities and a button that navigates to the city show page.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- On the city show page, you will see the city details and a line chart with the temperature forecast for today **(your browser timezone is used)**.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### CLI
+#### Scheduler
+You can trigger the scheduled hourly report instantly by running the following command.
+```bash
+./vendor/bin/sail artisan schedule:test
+# ┌ Which command would you like to run? ──────────────────────────────────────────┐
+# │ › ● '/usr/bin/php8.4' 'artisan' next-level:import-weather-hourly 'openmeteo'   │
+# └────────────────────────────────────────────────────────────────────────────────┘
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### Manually import hourly temperature for all cities
+This command will import the hourly temperature for all cities from OpenMeteo API based on current real time in that city.
+> NOTE: For example, if current time is 00:30 and the server is located in Germany, than the hourly forecast for German cities will be imported for current day, but the forecasts for UK and USA will be imported for the previous day.
+```bash
+./vendor/bin/sail artisan next-level:import-weather-hourly openmeteo
+```
 
-## Laravel Sponsors
+#### Manually import current temperature for all cities
+This command wasn't a part of the original requirements, but I've added it for the sake of demonstation of flexibility of the weather service implementation.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This command will import the current temperature for all cities from OpenMeteo API based on current real time in that city.
+> NOTE: Just like with previous command, the real time of the queried location is used.
+```bash
+./vendor/bin/sail artisan next-level:import-weather-current openmeteo
+```
