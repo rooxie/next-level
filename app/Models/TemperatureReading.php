@@ -22,8 +22,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TemperatureReading whereTemperature($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|TemperatureReading whereUpdatedAt($value)
  * @property-read \App\Models\City $city
- * @mixin \Eloquent
  * @mixin IdeHelperTemperatureReading
+ * @property int $year
+ * @property \Illuminate\Support\Carbon $time
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TemperatureReading whereTime($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|TemperatureReading whereYear($value)
+ * @mixin \Eloquent
  */
 class TemperatureReading extends Model
 {
@@ -35,6 +39,7 @@ class TemperatureReading extends Model
     // set fillable
     protected $fillable = [
         'city_id',
+        'year',
         'time',
         'temperature',
         'source',

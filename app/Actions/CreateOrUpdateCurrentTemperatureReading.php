@@ -23,11 +23,13 @@ class CreateOrUpdateCurrentTemperatureReading
         TemperatureReading::query()->updateOrCreate(
             [
                 'city_id' => $city->id,
+                'year' => $weatherDataDTO->time->year,
                 'time' => $weatherDataDTO->time->format('Y-m-d H:i:s'),
                 'source' => $weatherService->getSourceName(),
             ],
             [
                 'city_id' => $city->id,
+                'year' => $weatherDataDTO->time->year,
                 'time' => $weatherDataDTO->time->format('Y-m-d H:i:s'),
                 'source' => $weatherService->getSourceName(),
                 'temperature' => $weatherDataDTO->temperature,

@@ -17,6 +17,7 @@ class GetTemperatureReadingsForCity
     public function __invoke(City $city, Carbon $date): Collection
     {
         $temperatureReadings = TemperatureReading::query()->where('city_id', $city->id)
+            ->where('year', '=', $date->year)
             ->whereDate('time', '=', $date)
             ->orderByDesc('time')
             ->get();

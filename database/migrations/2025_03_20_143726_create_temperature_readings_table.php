@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('temperature_readings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('city_id')->constrained()->onDelete('cascade');
+            $table->integer('year')->unsigned();
             $table->dateTimeTz('time');
             $table->decimal('temperature', 4, 1);
             $table->enum('source', ['openmeteo']);
 
-            $table->index('city_id');
+            $table->index(['city_id', 'year']);
         });
     }
 
