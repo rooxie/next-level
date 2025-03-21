@@ -1,11 +1,75 @@
-@import 'tailwindcss';
+@import "bootstrap/dist/css/bootstrap.min.css";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+.mogra-regular {
+    font-family: "Knewave", system-ui;
+    font-weight: 400;
+    font-style: normal;
 }
+
+.next-level-design {
+    .btn {
+        border-radius: 0;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        background-color: white;
+        border: 1px solid black;
+        color: black;
+
+        &:hover {
+            background-color: #f8f9fa;
+            border-color: #343a40;
+            color: #212529;
+        }
+
+        &:active, &:focus {
+            background-color: #e9ecef;
+            border-color: #495057;
+            color: #212529;
+            box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.1);
+            outline: 0;
+        }
+    }
+
+    .btn-primary {
+        background-color: black;
+        border-color: black;
+        color: white;
+
+        &:hover {
+            background-color: #212529;
+            border-color: #212529;
+            color: white;
+        }
+
+        &:active, &:focus {
+            background-color: #343a40;
+            border-color: #343a40;
+            color: white;
+            box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
+            outline: 0;
+        }
+    }
+
+    .pagination {
+        .page-item .page-link {
+            border-radius: 0;
+            background-color: white;
+            border-color: black;
+            color: black;
+        }
+        .page-item.active .page-link {
+            background-color: black;
+            border-color: black;
+            color: white;
+        }
+    }
+
+    .pagination-wrapper p {
+        padding-right: 10px;
+    }
+}
+
